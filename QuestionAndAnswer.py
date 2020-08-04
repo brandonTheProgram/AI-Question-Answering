@@ -49,7 +49,7 @@ class Ui_Dialog(object):
         self.searchButton = QtWidgets.QPushButton(Dialog)
         self.searchButton.setStyleSheet(PUSH_BUTTON_STYLE)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, 
-                                           QtWidgets.QSizePolicy.Preferred)
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.searchButton.sizePolicy().hasHeightForWidth())
@@ -64,7 +64,7 @@ class Ui_Dialog(object):
         self.cancelButton = QtWidgets.QPushButton(Dialog)
         self.cancelButton.setStyleSheet(PUSH_BUTTON_STYLE)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, 
-                                           QtWidgets.QSizePolicy.Preferred)
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.cancelButton.sizePolicy(). hasHeightForWidth())
