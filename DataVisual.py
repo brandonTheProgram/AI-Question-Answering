@@ -66,12 +66,16 @@ class Canvas(FigureCanvas):
             texts = [bigram_mod[doc] for doc in texts]
             texts = [trigram_mod[bigram_mod[doc]] for doc in texts]
             texts_out = []
-            nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
-            for sent in texts:
-                doc = nlp(" ".join(sent)) 
-                texts_out.append([token.lemma_ for token in doc if token.pos_ in allowed_postags])
-            # remove stopwords once more after lemmatization
-            texts_out = [[word for word in simple_preprocess(str(doc)) if word not in stop_words] for doc in texts_out]    
+            try:
+                nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
+                nlp.max_length = 2000000
+                for sent in texts:
+                    doc = nlp(" ".join(sent)) 
+                    texts_out.append([token.lemma_ for token in doc if token.pos_ in allowed_postags])
+                # remove stopwords once more after lemmatization
+                texts_out = [[word for word in simple_preprocess(str(doc)) if word not in stop_words] for doc in texts_out]
+            except Exception as err:
+                LogError(err, file)
             return texts_out
 
         # processed Text Data!
